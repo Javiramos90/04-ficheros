@@ -1,5 +1,5 @@
 <?php
-require 'helperImages.php';
+require 'esImagen.php';
 /**
  * Mostrar una lista de los archivos que hay en un directorio
  */
@@ -28,10 +28,11 @@ if(is_dir($directorio)){
         echo "<h1>Archivos de imagen en el directorio $directorio</h1>";
         echo "<ul>";
 
-        // leemos cada entradda del directorio
+        // leemos cada entrada del directorio
         while(($archivo=readdir($dh)) !== false){
             if($archivo != "," && $archivo != ".."){
-            if(esImagen($directorio, $archivo)){
+                $rutaCompleta = $directorio . $archivo;
+            if(esImagen($rutaCompleta)){
                 echo "<li>$archivo</li>";
                 echo "<li>";
                 mostrarImagen($directorio ,$archivo);
